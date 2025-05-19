@@ -191,7 +191,7 @@ There are two Jupyter notebooks under this:
 * `1_gt_rsv_keyword_daily_value.ipynb`: It calculates the weekly metrics based on daily data. Then, it computes the rescaling weights from weekly data. The weights will then apply to the daily data to ensure consistent scaling. Optionally, it will normalize the rescaled values to a 0-100 range. Take note that we used the non-normalized version for the paper to capture a more accurate representation of the popularity values.
 
   * Input: 
-    * Raw daily Google Trends data files in 30-day windows (from `gt_raw_daily30daywindow_volumes` directory) 
+    * Raw daily Google Trends data files in 30-day windows in `gt_raw_daily30daywindow_volumes/{keyword}/`
     * Weekly Google Trends data files (from `gt_rsv_weekly_raw_volumes` subdirectory within)
 
   * Output: 
@@ -210,4 +210,40 @@ There are two Jupyter notebooks under this:
 
 ## Merged Search Volume Method
 
-Another pre-processing method was used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. 
+Another pre-processing method was used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. This was also fetched from the Chu, et al. (2023) study stated earlier. 
+
+The stitching works by having a 30-day overlapping window, wherein it will identify the common dates. For each of these common dates, we need to calculate the quotient wherein it is the $\text{value_in_first_csv_file} / \text{value_in_second_csv_file}$. Then, we will average these quotients to create the correction factor. The edge cases such as `NaNs`, zeroes, and infinities were handled by using default factors.
+
+The data stitching happens when we get the first 29 days from the first file (this is unchanged). Then, for each subsequent file, we will apply the correction factor to the 30th day, and add this corrected value to the stitched time series. We will continuously do this until we have filled every gap to complete the one year.
+
+There are two Jupyter notebooks under this:
+
+* `1_gt_msv_compute.ipynb`: This processes raw Google Trends data files for each keyword, and indentifies the overlapping dates between the consecutive 30-day windows. We will calculate the correction factors based on these overlaps. Finally, it applies the correction factors to create consistently scaled time series until the cutoff date of March 15, 2021.
+
+  * Input:
+
+    * Raw 30-day window Google Trends data files in `gt_raw_daily30daywindow_volumes/{keyword}/`
+  * Output:
+
+    * Individual keyword files (`{keyword}_msv_stitched_30day.csv`)
+
+* `2_gt_msv_merge.ipynb`: This script combines individual keyword files into a consolidated dataset. First, it will load and standardize each keyword's processed data. Then, merges all keywords based on date. This also ensures consistent date formats. The expected result is a single comprehensive dataset with all search terms.
+
+  * Input:
+
+    * Individual keyword files (`{keyword}_msv_stitched_30day.csv`)
+
+  * Output:
+
+    * 3_gt_msv_stitched_compute.csv (`3_gt_msv_stitched_compute.csv`)
+
+### Keywords Used
+
+The Jupyter notebooks on either strategies of data preprocessing used the following keywords:
+
+```
+flu, cough, fever, headache, lagnat, rashes, sipon, ubo, ecq, 
+face-shield, Frontliners, masks, Quarantine, social-distancing, work-from-home
+```
+
+These include both symptom terms and pandemic-related social terms in English and Filipino languages.
