@@ -9,7 +9,7 @@ Link: https://doi.org/10.48550/arXiv.2503.21162 (currently available as a pre-pr
 
 It was the first part of the undergraduate thesis of Michael T. Lopez II and Cheska Elise Hung from the Ateneo de Manila University, Philippines. Our supervisor for this work is Dr. Maria Regina Justina E. Estuar, PhD. 
 
-This paper's goal is to determine the online health-seeking behavior of those residing in Metro Manila (National Capital Region) on how they utilized Google for searching terms related to the COVID-19 pandemic. However, instead of investigating each term individually, we converted them into a network graph using correlation and adjacency matrices.
+This paper's goal is to determine the online health-seeking behavior of those residing in Metro Manila (National Capital Region) on how they utilized Google for searching terms related to the COVID-19 pandemic. However, instead of investigating each term individually, we converted them into a network graph using correlation and adjacency matrices. The consequence of such conversion is to determine the *relationship* on how strongly correlated the search terms are.
 
 ## Requirements
 
@@ -134,7 +134,7 @@ python download.py --tag "covid-19" --region "PH-00" --start-date "2023-01-01" -
 * The script handles Google Trends' limitations by breaking requests into smaller time periods
 * Incomplete data is marked with `.partial.csv`
 * If you encounter rate limiting, try increasing the `--delay` parameter
-* For international searches, specify the appropriate region code
+* For international searches, please specify the appropriate region code
 
 ## Output Dataset of Google Trends Scraper
 
@@ -194,9 +194,9 @@ Abel Brodeur, Andrew E. Clark, Sarah Fleche, and Nattavudh Powdthavee. 2021. COV
 
 There are three subdirectories under this:
 
-* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory. For example, under `ubo`, we will combine together the CSV files of March 16, 2020 until April 15, 2020, then April 16, s2020 until May 15, 2020, and so on until it reaches March 15, 2021. That is the reason why we have the `extra_day` directory to complete the one-year series.
+* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory. For example, under `ubo`, we will combine together the CSV files of March 16, 2020 until April 15, 2020, then April 16, 2020 until May 15, 2020, and so on until it reaches March 15, 2021. That is the reason why we have the `extra_day` directory to complete the one-year series.
 
-* `gt_rsv_weekly_raw_volumes`: This contains all CSV files which were weekly data's worth for one-year on each search term. If you read the paper, we could only download a resolution of daily data until nine months. Beyond that, Google Trends will return a weekly resolution of data.
+* `gt_rsv_weekly_raw_volumes`: This contains all CSV files which were weekly data's worth for one-year on each search term. We could only download a resolution of daily data until nine months. Beyond that, Google Trends will return a weekly resolution of data.
 
 * `gt_weekly_weight`: This contains all the weekly weights by comparing the direct weekly values (downloaded directly from GT) to the daily averages (manually computed the mean from the CSV files in `gt_rsv_daily_raw_stitched`)
 
