@@ -322,19 +322,14 @@ The **adjacency matrices** here represent network connections between search ter
 * Multiple thresholds allow for different network densities
 * Only the lower triangular portion (including diagonal) is filled
 
-The transformation works as follows:
+The transformation works as follows. Given a distance correlation matrix $\mathbf{C} \in \mathbb{R}^{n \times n}$ and a threshold $\tau \in [0,1]$, we define the adjacency matrix $\mathbf{A} \in \{0,1\}^{n \times n}$ as:
 
-```latex
-\text{Given a distance correlation matrix } \mathbf{C} \in \mathbb{R}^{n \times n} \text{ and a threshold } \tau \in [0,1],\\
-\text{the adjacency matrix } \mathbf{A} \in \{0,1\}^{n \times n} \text{ is defined as:}
-
-A_{ij} = 
+$$A_{ij} = 
 \begin{cases} 
 1 & \text{if } C_{ij} \geq \tau \\
 0 & \text{if } C_{ij} < \tau
 \end{cases}
-\quad \text{for } i,j \in \{1,2,\ldots,n\}
-```
+\quad \text{for } i,j \in \{1,2,\ldots,n\}$$
 
 
 
