@@ -212,7 +212,7 @@ There are two Jupyter notebooks under this:
 
 Another pre-processing method was used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. This was also fetched from the Chu, et al. (2023) study stated earlier. 
 
-The stitching works by having a 30-day overlapping window, wherein it will identify the common dates. For each of these common dates, we need to calculate the quotient wherein it is the $`\text{value_in_first_csv_file} / \text{value_in_second_csv_file}`$. Then, we will average these quotients to create the correction factor. The edge cases such as `NaNs`, zeroes, and infinities were handled by using default factors.
+The stitching works by having a 30-day overlapping window, wherein it will identify the common dates. For each of these common dates, we need to calculate the quotient wherein it is the $`\frac{\text{value\_in\_first\_csv\_file}}{\text{value\_in\_second\_csv\_file}}`$. Then, we will average these quotients to create the correction factor. The edge cases such as `NaNs`, zeroes, and infinities were handled by using default factors.
 
 The data stitching happens when we get the first 29 days from the first file (this is unchanged). Then, for each subsequent file, we will apply the correction factor to the 30th day, and add this corrected value to the stitched time series. We will continuously do this until we have filled every gap to complete the one year.
 
