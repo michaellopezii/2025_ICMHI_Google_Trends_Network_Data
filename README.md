@@ -166,7 +166,7 @@ gt_preprocessed_data/
 │   ├── 2_gt_rsv_merge.ipynb
 │   ├── 3_gt_rescaled_rsv.csv
 │   ├── 4_gt_normal_rescaled_rsv.csv
-│   └── ... (15 files of {keyword}_rsv_stitched.csv)
+└── └── ... (15 files of {keyword}_rsv_stitched.csv)
 ```
 
 ### Rescaling Daily Data Method
