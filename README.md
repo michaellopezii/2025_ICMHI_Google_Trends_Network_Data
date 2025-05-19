@@ -2,12 +2,12 @@
 
 This is the repository for the Jupyter notebook and dataset used for the following conference paper:
 
-Michael T. Lopez, Cheska Elise Hung, and Maria Regina Justina E. Estuar.\
+Michael T. Lopez II, Cheska Elise Hung, and Maria Regina Justina E. Estuar.\
 **Network Density Analysis of Health Seeking Behavior in Metro Manila: A Retrospective Analysis on COVID-19 Google Trends Data**\
 In Proceedings of the 9th International Conference on Medical and Health Informatics (ICMHI 2025)\
 Link: https://doi.org/10.48550/arXiv.2503.21162 (currently available as a pre-print on arXiv)
 
-It was the first part of the undergraduate thesis of Michael T. Lopez II and Cheska Elise Hung from the Ateneo de Manila University, Philippines. Our supervisor for this work is Dr. Maria Regina Justine E. Estuar, PhD. 
+It was the first part of the undergraduate thesis of Michael T. Lopez II and Cheska Elise Hung from the Ateneo de Manila University, Philippines. Our supervisor for this work is Dr. Maria Regina Justina E. Estuar, PhD. 
 
 This paper's goal is to determine the online health-seeking behavior of those residing in Metro Manila (National Capital Region) on how they utilized Google for searching terms related to the COVID-19 pandemic. However, instead of investigating each term individually, we converted them into a network graph using correlation and adjacency matrices.
 
