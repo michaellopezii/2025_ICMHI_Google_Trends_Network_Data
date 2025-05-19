@@ -1,6 +1,6 @@
 # Overview
 
-This is the repository for the Jupyter notebook and dataset used for the following conference paper:
+This is the repository for the Jupyter notebooks and datasets used for the following conference paper:
 
 Michael T. Lopez II, Cheska Elise Hung, and Maria Regina Justina E. Estuar.\
 **Network Density Analysis of Health Seeking Behavior in Metro Manila: A Retrospective Analysis on COVID-19 Google Trends Data**\
