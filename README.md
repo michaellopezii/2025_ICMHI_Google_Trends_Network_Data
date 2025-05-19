@@ -160,7 +160,7 @@ There is also an additional folder named `extra_day` for the purpose of completi
 
 ## Preprocessing Google Trends Dataset
 
-Under the `gt_preprocessed_data` directory, there are two subdirectories that featured two different data preprocessing method. Then under each subdirectory there are Jupyter notebooks, further subdirectories, and CSV dataset files. Here is an overview for it:
+Under the `gt_preprocessed_data` directory, there are two subdirectories that featured two different data preprocessing methods. Then under each subdirectory there are Jupyter notebooks, further subdirectories, and CSV dataset files. Here is an overview for it:
 
 ```
 gt_preprocessed_data/
@@ -224,7 +224,7 @@ There are two Jupyter notebooks under this:
 
 ### Merged Search Volume Method
 
-Another pre-processing method was used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. This was also fetched from the Chu, et al. (2023) study stated earlier. 
+Another pre-processing method used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. This was also fetched from the Chu, et al. (2023) study stated earlier. 
 
 The stitching works by having a 30-day overlapping window, wherein it will identify the common dates. For each of these common dates, we need to calculate the quotient wherein it is the $`\frac{\text{value\_in\_first\_csv\_file}}{\text{value\_in\_second\_csv\_file}}`$. Then, we will average these quotients to create the correction factor. The edge cases such as `NaNs`, zeroes, and infinities were handled by using default factors.
 
