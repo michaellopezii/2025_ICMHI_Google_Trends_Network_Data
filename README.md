@@ -150,7 +150,7 @@ Under the `gt_preprocessed_data` directory, there are two subdirectories that fe
 
 ### Rescaling Daily Data Method
 
-The preprocessed data used for the conference paper can be found on the `gt_rsv-stitched` directory. 
+The preprocessed data used for the conference paper can be found on the `gt_rsv_stitched` directory. 
 
 This Rescaling Daily Data algorithm uses weekly data as a reference to rescale daily data, ensuring consistent relative search volumes across different time periods. It was also originally derived from the data preprocessing used in the study below:
 
@@ -159,8 +159,7 @@ Abel Brodeur, Andrew E. Clark, Sarah Fleche, and Nattavudh Powdthavee. 2021. COV
 
 There are three subdirectories under this:
 
-* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory. 
-
+* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory.\ 
 For example, under `ubo`, we will combine together the CSV files of March 16, 2020 until April 15, 2020, then April 16, 2020 until May 15, 2020, and so on until it reaches March 15, 2021. That is the reason why we have the `extra_day` directory to complete the one-year series.
 
 * `gt_rsv_weekly_raw_volumes`: This contains all CSV files which were weekly data's worth for one-year on each search term. If you read the paper, we could only download a resolution of daily data until nine months. Beyond that, Google Trends will return a weekly resolution of data.
