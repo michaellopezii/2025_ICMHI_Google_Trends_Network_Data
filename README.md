@@ -71,5 +71,56 @@ For the remainder of the other code and all datasets used, these were all origin
 
 This will be updated accordingly in the future once we have received the official DOI when the conference indexed our work. For now, the pre-print version could be viewed at arXiv.
 
+# Navigating Contents of Repository
+
+## Google Trends Scraper
+
+```
+gt_scraper/
+├── download_data.py    # Main script with command line interface
+└── download.py         # Helper functions for data retrieval
+```
+
+The `gt_scraper` directory contains two scripts. These facilitate the collection of Google Trends data for specified search terms over custom date ranges.
+
+### Installation
+
+Please install the required packages using pip:
+
+```bash
+pip install pytrends click
+```
+
+### Parameters
+
+* `--tag`: The search term to track in Google Trends
+* `--region` or `-r`: Geographic location of interest (e.g., "US", "GB", "JP", "PH")
+* `--start-date`: Beginning of the date range in YYYY-MM-DD format
+* `--end-date`: End of the date range in YYYY-MM-DD format
+* `--days` or `-n`: Number of days per request (default: 29)
+* `--proxy` or `-p`: Use proxies for requests (optional)
+* `--delay` or `-d`: Delay between requests in seconds (default: 60)
+
+### Output
+
+The script creates directories named after the search term (with '/' replaced by '.') and saves CSV files containing the Google Trends data. Files are named according to the date range they cover:
+
+* Regular files: `YYYY MM DD.csv`
+* Incomplete data: `YYYY MM DD.partial.csv`
+
+### Usage of GT Scraper Scripts
+
+The script uses a command-line interface to download Google Trends data. Below is a sample:
+
+```bash
+python download.py --tag "covid-19" --region "PH-00" --start-date "2023-01-01" --end-date "2023-12-31" --days 30
+```
+
+### Notes for GT Scraper
+
+* The script handles Google Trends' limitations by breaking requests into smaller time periods
+* Incomplete data is marked with `.partial.csv`
+* If you encounter rate limiting, try increasing the `--delay` parameter
+* For international searches, specify the appropriate region code
 
 
