@@ -17,7 +17,6 @@ The following code was ran on an Apple Macbook Air M1 (2020). Here are the speci
 
 | Hardware | Specification |
 |----------|---------------|
-| Model | MacBook Air (M1, 2020) |
 | Processor | Apple M1 chip with 8-core CPU |
 | Memory | 8GB unified memory |
 | Storage | 256GB SSD |
@@ -30,7 +29,7 @@ If you will use or build upon on top of the code materials, please use the follo
 
 ## Google Trends Scraper
 
-If you will be using the Google Trends scraper using the `pytrends` API, the scripts are located at the `gt_scraper` directory. This code was originated from as referenced in ACM format: 
+If you will be using the Google Trends scraper using the `pytrends` API, the scripts are located at the `gt_scraper` directory. This code was originated from: 
 
 Amanda M Y Chu, Andy C Y Chong, Nick H T Lai, Agnes Tiwari, and Mike K P So. 2023. Enhancing the Predictive Power of Google Trends Data Through Network Analysis: Infodemiology Study of COVID-19. *JMIR Public Health Surveill.* 9, (September 2023). https://doi.org/10.2196/42446
 
@@ -85,7 +84,7 @@ The `gt_scraper` directory contains two scripts. These facilitate the collection
 
 ### Installation
 
-Please install the required packages using pip:
+Please install the required packages using `pip`:
 
 ```bash
 pip install pytrends click
@@ -110,7 +109,7 @@ The script creates directories named after the search term (with '/' replaced by
 
 ### Usage of GT Scraper Scripts
 
-The script uses a command-line interface to download Google Trends data. Below is a sample:
+The script uses a command-line interface to download Google Trends data. Below is a sample of collecting data from the Metro Manila region in the Philippines:
 
 ```bash
 python download.py --tag "covid-19" --region "PH-00" --start-date "2023-01-01" --end-date "2023-12-31" --days 30
@@ -144,3 +143,48 @@ gt_raw_daily30daywindow_volumes/
 │   └── ... (30-day rolling window CSV files from March 16, 2020 until March 15, 2021)
 └── ... (12 more directories)
 ```
+
+## Preprocessing Google Trends Dataset
+
+Under the `gt_preprocessed_data` directory, there are two subdirectories that featured two different data preprocessing method. 
+
+### Rescaling Daily Data Method
+
+The preprocessed data used for the conference paper can be found on the `gt_rsv-stitched` directory. 
+
+This Rescaling Daily Data algorithm uses weekly data as a reference to rescale daily data, ensuring consistent relative search volumes across different time periods. It was also originally derived from the data preprocessing used in the study below:
+
+Abel Brodeur, Andrew E. Clark, Sarah Fleche, and Nattavudh Powdthavee. 2021. COVID-19, lockdowns and well-being: Evidence from Google Trends. *J. Public Econ.* 193, (January 2021). https://doi.org/10.1016/j.jpubeco.2020.104346
+
+
+There are three subdirectories under this:
+
+* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory. 
+
+For example, under `ubo`, we will combine together the CSV files of March 16, 2020 until April 15, 2020, then April 16, 2020 until May 15, 2020, and so on until it reaches March 15, 2021. That is the reason why we have the `extra_day` directory to complete the one-year series.
+
+* `gt_rsv_weekly_raw_volumes`: This contains all CSV files which were weekly data's worth for one-year on each search term. If you read the paper, we could only download a resolution of daily data until nine months. Beyond that, Google Trends will return a weekly resolution of data.
+
+* `gt_weekly_weight`: This contains all the weekly weights by comparing the direct weekly values (downloaded directly from GT) to the daily averages (manually computed the mean from the CSV files in `gt_rsv_daily_raw_stitched`)
+
+There are two Jupyter notebooks under this:
+
+* `1_gt_rsv_keyword_daily_value.ipynb`: It calculates the weekly metrics based on daily data. Then, it computes the rescaling weights from weekly data. The weights will then apply to the daily data to ensure consistent scaling. Optionally, it will normalize the rescaled values to a 0-100 range. Take note that we used the non-normalized version for the paper to capture a more accurate representation of the popularity values.
+
+  * Input: 
+    * Raw daily Google Trends data files in 30-day windows (from `gt_raw_daily30daywindow_volumes` directory) 
+    * Weekly Google Trends data files (from `gt_rsv_weekly_raw_volumes` subdirectory within)
+
+  * Output: 
+    * Stitched daily data files (`gt_rsv_daily_raw_stitched`)
+    * Weekly weight calculation files (`gt_weekly_weight`) 
+    * Final rescaled data files for each keyword (`{keyword}_rsv_stitched.csv`)
+
+* `2_gt_rsv_merge.ipynb`: This script combines the individual keyword files into consolidated datasets. So it reads first all processed keyword files. Then, combines them into two comprehensive datasets. 
+
+  * Input: 
+    * Individual keyword rescaled files (`{keyword}_rsv_stitched.csv`)
+  
+  * Output:
+    * Raw rescaled values (`3_gt_rescaled_rsv.csv`)
+    * Normalized (0-100) values (`4_gt_normal_rescaled_rsv.csv`)
