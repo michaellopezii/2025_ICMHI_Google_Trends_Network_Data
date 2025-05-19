@@ -208,7 +208,7 @@ There are two Jupyter notebooks under this:
     * Raw rescaled values (`3_gt_rescaled_rsv.csv`)
     * Normalized (0-100) values (`4_gt_normal_rescaled_rsv.csv`)
 
-## Merged Search Volume Method
+### Merged Search Volume Method
 
 Another pre-processing method was used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. This was also fetched from the Chu, et al. (2023) study stated earlier. 
 
@@ -237,7 +237,7 @@ There are two Jupyter notebooks under this:
 
     * 3_gt_msv_stitched_compute.csv (`3_gt_msv_stitched_compute.csv`)
 
-### Keywords Used
+### Keywords Used on Both Preprocessing Methods
 
 The Jupyter notebooks on either strategies of data preprocessing used the following keywords:
 
