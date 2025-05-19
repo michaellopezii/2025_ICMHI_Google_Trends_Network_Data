@@ -7,7 +7,9 @@ Michael T. Lopez, Cheska Elise Hung, and Maria Regina Justina E. Estuar.\
 In Proceedings of the 9th International Conference on Medical and Health Informatics (ICMHI 2025)
 Link: https://doi.org/10.48550/arXiv.2503.21162 (currently available as a pre-print on arXiv)
 
-It was the first part of the undergraduate thesis of Michael T. Lopez II and Cheska Elise Hung from the Ateneo de Manila University, Philippines. Our supervisor for this work is Dr. Maria Regina Justine E. Estuar, PhD.
+It was the first part of the undergraduate thesis of Michael T. Lopez II and Cheska Elise Hung from the Ateneo de Manila University, Philippines. Our supervisor for this work is Dr. Maria Regina Justine E. Estuar, PhD. 
+
+This paper's goal is to determine the online health-seeking behavior of those residing in Metro Manila (National Capital Region) on how they utilized Google for searching terms related to the COVID-19 pandemic. However, instead of investigating each term individually, we converted them into a network graph using correlation and adjacency matrices.
 
 ## Requirements
 
@@ -28,9 +30,9 @@ If you will use or build upon on top of the code materials, please use the follo
 
 ## Google Trends Scraper
 
-If you will be using the Google Trends scraper using the `pytrends` API, the scripts are located at the `gt_scraper` directory. This code was originated from: 
+If you will be using the Google Trends scraper using the `pytrends` API, the scripts are located at the `gt_scraper` directory. This code was originated from as referenced in ACM format: 
 
-Chu, A. M. Y., Chong, A. C. Y., Lai, N. H. T., Tiwari, A., & So, M. K. P. (2023). Enhancing the Predictive Power of Google Trends Data Through Network Analysis: Infodemiology Study of COVID-19. JMIR Public Health and Surveillance, 9. https://doi.org/10.2196/42446
+Amanda M Y Chu, Andy C Y Chong, Nick H T Lai, Agnes Tiwari, and Mike K P So. 2023. Enhancing the Predictive Power of Google Trends Data Through Network Analysis: Infodemiology Study of COVID-19. *JMIR Public Health Surveill.* 9, (September 2023). https://doi.org/10.2196/42446
 
 Below is the BibTeX entry of the article:
 
@@ -50,7 +52,7 @@ Below is the BibTeX entry of the article:
 
 ## Google Trends Preprocessing and Network Analysis Conversion
 
-For the remainder of the code and all datasets used, these were all original work from our team. Please use the following BibTeX entry to cite our paper if you have used any part of the code or dataset (besides the Google Trends scraper script):
+For the remainder of the other code and all datasets used, these were all original work from our team. Please use the following BibTeX entry to cite our paper if you have used any part of the code or dataset (besides the Google Trends scraper script):
 
 ```bibtex
 @misc{lopezNetwork2025,
@@ -67,7 +69,7 @@ For the remainder of the code and all datasets used, these were all original wor
 }
 ```
 
-This will be updated accordingly once we have received the official DOI upon the conference indexed our work. For now, the pre-print could be viewed at arXiv.
+This will be updated accordingly in the future once we have received the official DOI when the conference indexed our work. For now, the pre-print version could be viewed at arXiv.
 
 
 
