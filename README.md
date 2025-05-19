@@ -331,10 +331,8 @@ $$A_{ij} =
 \end{cases}
 \quad \text{for } i,j = 1,2,\ldots,n$$
 
-## License
+# License
 
 MIT (see the [`LICENSE.md`](./LICENSE.md) file).\
 Please cite the paper according to the instructions above.
-
-
 
