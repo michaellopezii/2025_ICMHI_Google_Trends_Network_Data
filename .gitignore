@@ -1,0 +1,10 @@
+# SSH Keys (CRITICAL: never commit these)
+icmhi_2025
+icmhi_2025.pub
+*_rsa
+*_dsa
+*.pem
+*.ppk
+id_*
+*.key
+
