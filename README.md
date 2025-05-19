@@ -131,4 +131,16 @@ On each subdirectory, you may see the comma separated value (CSV) files named af
 
 There is also an additional folder named `extra_day` for the purpose of completing the one-year timeline for the data preprocessing used in the conference paper. This is formally known as **Rescaling Daily Data Method**. Take note this was referred to as "RSV" in the filenames for simplicity.
 
-
+```
+gt_raw_daily30daywindow_volumes/
+├── cough/
+│   ├── extra_day/2021 02 20.csv
+│   └── ... (30-day rolling window CSV files from March 16, 2020 until March 15, 2021)
+├── ecq/
+│   ├── extra_day/2021 02 20.csv
+│   └── ... (30-day rolling window CSV files from March 16, 2020 until March 15, 2021)
+├── face-shield/
+│   ├── extra_day/2021 02 20.csv
+│   └── ... (30-day rolling window CSV files from March 16, 2020 until March 15, 2021)
+└── ... (12 more directories)
+```
