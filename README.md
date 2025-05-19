@@ -146,7 +146,28 @@ gt_raw_daily30daywindow_volumes/
 
 ## Preprocessing Google Trends Dataset
 
-Under the `gt_preprocessed_data` directory, there are two subdirectories that featured two different data preprocessing method. 
+Under the `gt_preprocessed_data` directory, there are two subdirectories that featured two different data preprocessing method. Then under each subdirectory there are Jupyter notebooks, further subdirectories, and CSV dataset files. Here is an overview for it:
+
+```
+gt_preprocessed_data/
+├── gt_msv_stitched/
+│   ├── 1_gt_msv_compute.ipynb
+│   ├── 2_gt_msv_merge.ipynb
+│   ├── 3_gt_msv_stitched_compute.csv
+│   └── ... (15 files of "{keyword}_msv_stitched_30day.csv") 
+├── gt_rsv_stitched/
+│   ├── gt_rsv_daily_raw_stitched/
+│   │   └── ... (15 files of "{keyword}_rsv_daily_raw_stitched.csv")
+│   ├── gt_rsv_weekly_raw_volumes/
+│   │   └── ... (15 files of "{keyword}_weekly_raw.csv")
+│   ├── gt_weekly_weight/
+│   │   └── ... (15 files of "{keyword}_weekly_search_weight.csv")
+│   ├── 1_gt_rsv_keyword_daily_value.ipynb
+│   ├── 2_gt_rsv_merge.ipynb
+│   ├── 3_gt_rescaled_rsv.csv
+│   ├── 4_gt_normal_rescaled_rsv.csv
+│   └── ... (15 files of {keyword}_rsv_stitched.csv)
+```
 
 ### Rescaling Daily Data Method
 
@@ -159,8 +180,7 @@ Abel Brodeur, Andrew E. Clark, Sarah Fleche, and Nattavudh Powdthavee. 2021. COV
 
 There are three subdirectories under this:
 
-* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory.\ 
-For example, under `ubo`, we will combine together the CSV files of March 16, 2020 until April 15, 2020, then April 16, 2020 until May 15, 2020, and so on until it reaches March 15, 2021. That is the reason why we have the `extra_day` directory to complete the one-year series.
+* `gt_rsv_daily_raw_stitched`: This contains all the comma separated value (CSV) filenames of `{keyword}_rsv_daily_raw_stitched.csv`. The data came from adjacently putting together the CSV files from each search term in the `gt_raw_daily30daywindow_volumes` directory. For example, under `ubo`, we will combine together the CSV files of March 16, 2020 until April 15, 2020, then April 16, s2020 until May 15, 2020, and so on until it reaches March 15, 2021. That is the reason why we have the `extra_day` directory to complete the one-year series.
 
 * `gt_rsv_weekly_raw_volumes`: This contains all CSV files which were weekly data's worth for one-year on each search term. If you read the paper, we could only download a resolution of daily data until nine months. Beyond that, Google Trends will return a weekly resolution of data.
 
@@ -187,3 +207,7 @@ There are two Jupyter notebooks under this:
   * Output:
     * Raw rescaled values (`3_gt_rescaled_rsv.csv`)
     * Normalized (0-100) values (`4_gt_normal_rescaled_rsv.csv`)
+
+## Merged Search Volume Method
+
+Another pre-processing method was used (never featured in the conference paper) was the Merged Search Volume Algorithm. This process can be found in the `gt_msv_stitched` subdirectory. 
