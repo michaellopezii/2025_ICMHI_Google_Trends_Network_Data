@@ -72,6 +72,20 @@ This will be updated accordingly in the future once we have received the officia
 
 # Navigating Contents of Repository
 
+Below is the general overview of how to navigate in the folder. Please skip to the appropriate subheading to know the specific details of each of the four subdirectories.
+
+```
+2025_ICMHI_Google_Trends_Network_Data/
+├── gt_corr_adj_matrix/
+│   └── ... (8 subdirectories and 2 Jupyter notebooks)    # Go to "Conversion to Correlation and Adjacency Matrices" subheading for more info
+├── gt_preprocessed_data/
+│   └── ... (2 subdirectories)                            # Go to "Preprocessing Google Trends Dataset" subheading for more info
+├── gt_raw_daily30daywindow_volumes/
+│   └── ... (15 subdirectories)                           # Go to "Output Dataset of Google Trends Scraper" subheading for more info
+├── gt_scraper/
+└── └── ... (2 Python scripts)                            # Go to "Google Trends Scraper" subheading for more info
+```
+
 ## Google Trends Scraper
 
 ```
@@ -247,3 +261,27 @@ face-shield, Frontliners, masks, Quarantine, social-distancing, work-from-home
 ```
 
 These include both symptom terms and pandemic-related social terms in English and Filipino languages.
+
+
+## Conversion to Correlation and Adjacency Matrices
+
+It can be found on the `gt_corr_adj_matrix` folder are the processes on how the keywords were converted into correlation and adjacency matrices. Below is the directory overview for it:
+
+```
+gt_corr_adj_matrix/
+├── gt_adj_matrices_msv_15day/
+│   ├── 0.4_threshold/ (320+ CSV files)
+│   ├── 0.5_threshold/ (320+ CSV files)
+│   ├── 0.6_threshold/ (320+ CSV files)
+│   └── 0.8_threshold/ (320+ CSV files)
+├── gt_adj_matrices_msv_30day/ (4 subdirectories same as above)
+├── gt_adj_matrices_rsv_normal_15day/ (4 subdirectories same as above)
+├── gt_adj_matrices_rsv_normal_30day/ (4 subdirectories same as above)
+├── gt_dcorr_matrices_msv_15day/ (320+ CSV files)
+├── gt_dcorr_matrices_msv_30day/ (320+ CSV files)
+├── gt_dcorr_matrices_rsv_normal_15day/ (320+ CSV files)
+├── gt_dcorr_matrices_rsv_normal_30day/ (320+ CSV files)
+├── gt_adj_matrix_calculate.ipynb
+└── gt_dcorr_matrix_calculate.ipynb
+```
+
