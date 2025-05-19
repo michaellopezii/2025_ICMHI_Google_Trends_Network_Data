@@ -8,3 +8,6 @@ icmhi_2025.pub
 id_*
 *.key
 
+# Other files
+.DS_Store
+.gitignore
