@@ -123,4 +123,12 @@ python download.py --tag "covid-19" --region "PH-00" --start-date "2023-01-01" -
 * If you encounter rate limiting, try increasing the `--delay` parameter
 * For international searches, specify the appropriate region code
 
+## Output Dataset of Google Trends Scraper
+
+You may see on the `gt_raw_daily30daywindow_volumes` directory for the 30-day rolling window datasets of each search term. The subdirectory's name is that search keyword used. There are 15 directories that represents the 15 keywords used in the study.
+
+On each subdirectory, you may see the comma separated value (CSV) files named after the first day when it scraped the popularity score of that search term. For example, if it is named `2020 03 16.csv`, then you will see the popularity scores for that term from March 16, 2020 until April 15, 2020. 
+
+There is also an additional folder named `extra_day` for the purpose of completing the one-year timeline for the data preprocessing used in the conference paper. This is formally known as **Rescaling Daily Data Method**. Take note this was referred to as "RSV" in the filenames for simplicity.
+
 
