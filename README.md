@@ -333,6 +333,11 @@ $$A_{ij} =
 
 # License
 
-MIT (see the [`LICENSE.md`](./LICENSE.md) file).\
+MIT (see the [`LICENSE.md`](./LICENSE.md) file) for more details.\
 Please cite the paper according to the instructions above.
 
+# Acknowledgements
+
+All of these efforts were not possible without the opportunity to work conducively with the Ateneo Social Computing Science Laboratory, and its parent entity, which is the Ateneo Center for Computing Competency and Research.
+
+For specific individuals, we are grateful to receive feedback and criticisms from Mr. Christian E. Pulmano (PhD candidate), and Atty. Kennedy E. Espina. Their wisdom were invaluable for how this paper was shaped.
