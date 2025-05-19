@@ -285,3 +285,56 @@ gt_corr_adj_matrix/
 └── gt_dcorr_matrix_calculate.ipynb
 ```
 
+There are two Jupyter notebooks that can be found under this directory:
+
+* `gt_dcorr_matrix_calculate.ipynb`: This calculates distance correlation matrices from preprocessed Google Trends data. Specifically, it first computes the **distance correlation** between each pair of search terms. Then, it processes data using sliding time windows (15-day and 30-day). From here, it creates daily correlation matrices throughout the study period. It only fills the *lower triangle portion* of the matrices for efficient computing.
+
+  * Input: 
+
+    * Preprocessed Google Trends RSV data (`3_gt_rescaled_rsv.csv` from the `gt_preprocessed_data/gt_rsv_stitched/` folder)
+
+  * Output:
+
+    * Distance correlation matrices saved in `gt_dcorr_matrices_rsv_15day/` and `gt_dcorr_matrices_rsv_30day/` subdirectories.
+  
+* `gt_adj_matrix_calculate.ipynb`: This converts distance correlation matrices into adjacency matrices through transforming the correlation values into binary connections (0 or 1). We have also applied multiple correlation thresholds (0.4, 0.5, 0.6, 0.8). Then we process both MSV and RSV correlation matrices. There was also an effort to support both 15-day and 30-day window sizes.
+
+  * Input:
+
+    * Distance correlation matrices from the `gt_dcorr_matrices_msv_15day/`, `gt_dcorr_matrices_msv_30day/`, `gt_dcorr_matrices_rsv_normal_15day/`, and `gt_dcorr_matrices_rsv_normal_30day/` directories
+
+  * Output:
+  
+    * Adjacency matrices organized by threshold and source: such as `gt_adj_matrices_msv_15day/0.4_threshold/`, `gt_adj_matrices_msv_15day/0.5_threshold/`, and every other combination
+
+### Distance Correlation and Adjacency Matrix
+
+The **distance correlation** is a measure of dependence between random variables that:
+
+* Can detect both linear and non-linear relationships
+* Is zero if and only if the variables are statistically independent
+* Can identify relationships that traditional correlation measures might miss
+
+The **adjacency matrices** here represent network connections between search terms:
+
+* Each search term is a node in the network
+* A connection exists if the correlation exceeds a specified threshold
+* Multiple thresholds allow for different network densities
+* Only the lower triangular portion (including diagonal) is filled
+
+The transformation works as follows:
+
+```latex
+\text{Given a distance correlation matrix } \mathbf{C} \in \mathbb{R}^{n \times n} \text{ and a threshold } \tau \in [0,1],\\
+\text{the adjacency matrix } \mathbf{A} \in \{0,1\}^{n \times n} \text{ is defined as:}
+
+A_{ij} = 
+\begin{cases} 
+1 & \text{if } C_{ij} \geq \tau \\
+0 & \text{if } C_{ij} < \tau
+\end{cases}
+\quad \text{for } i,j \in \{1,2,\ldots,n\}
+```
+
+
+
