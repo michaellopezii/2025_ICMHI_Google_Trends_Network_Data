@@ -322,14 +322,14 @@ The **adjacency matrices** here represent network connections between search ter
 * Multiple thresholds allow for different network densities
 * Only the lower triangular portion (including diagonal) is filled
 
-The transformation works as follows. Given a distance correlation matrix $\mathbf{C} \in \mathbb{R}^{n \times n}$ and a threshold $\theta \in \{0.4, 0.5, 0.6, 0.8\}$, we define the adjacency matrix $\mathbf{A} \in \{0,1\}^{n \times n}$ as:
+The transformation works as follows. Given a distance correlation matrix $\mathbf{C} \in \mathbb{R}^{n \times n}$ and a threshold $\theta \in \text{{0.4, 0.5, 0.6, 0.8}}$, we define the adjacency matrix $\mathbf{A} \in \text{{0,1}}^{n \times n}$ as:
 
 $$A_{ij} = 
 \begin{cases} 
 1 & \text{if } C_{ij} \geq \theta \\
 0 & \text{if } C_{ij} < \theta
 \end{cases}
-\quad \text{for } i,j \in \{1,2,\ldots,n\}$$
+\quad \text{for } i,j \in \text{{1,2,\ldots,n}}$$
 
 
 
